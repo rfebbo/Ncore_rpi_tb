@@ -1,15 +1,12 @@
 from machine import Pin
 from machine import Timer
-
 from micropython import const
-
-
-
 
 main_clk = False
 check_clk = False
 
 scan_data = '01010101'
+
 
 def flip_clk(t):
     global main_clk, check_clk
@@ -17,11 +14,9 @@ def flip_clk(t):
         main_clk = not main_clk
         check_clk = True
     
-
+    
 
 if __name__ == '__main__':
-
-    
     main_timer = Timer()
     state_timer = Timer()
     
@@ -59,6 +54,8 @@ if __name__ == '__main__':
                 if current_bit >= len(scan_data):
                     run = False
                 
+              #  if curent_bit == len(scan_data):
+                #    run = False
                 
         p1.value(main_clk)
         p0.value(p0_value)
